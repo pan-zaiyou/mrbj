@@ -40,5 +40,5 @@
   "send-message_empty": "消息不能为空",
   "close-ticket_success": "工单已关闭",
   "close-ticket_fail": "工单关闭失败",
-  "no-subscription": "您还没有订阅，请先订阅"
+  "no-subscription": "您还没有套餐，请先购买"
 }
