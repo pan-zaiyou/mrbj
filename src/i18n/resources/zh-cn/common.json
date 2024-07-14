@@ -149,7 +149,7 @@
     },
     "subscription-card": {
       "title": "我的套餐",
-      "description": "您的订阅信息",
+      "description": "您的套餐信息",
       "plan": "计划",
       "expire_forever": "此套餐长期有效",
       "expire_limited_zero": "此套餐已到期，请及时续费",
@@ -162,12 +162,12 @@
       "description": "您的常用操作",
       "tutorial": {
         "primary": "使用教程",
-        "secondary": "不会用，那还赶快查看使用教程"
+        "secondary": "不会用？那还赶快查看使用教程"
       },
       "subscribe": {
         "primary": "一键导入",
         "secondary": "快速将配置导入到软件进行使用",
-        "copy": "复制订阅链接",
+        "copy": "复制配置链接",
         "scan": "扫描二维码",
         "scan_tips": "使用支持扫码的客户端扫码导入配置",
         "clash": "导入至 Clash",
