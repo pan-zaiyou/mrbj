@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import lo from "lodash-es";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
@@ -27,7 +27,6 @@ import { Formik } from "formik";
 import { Trans, useTranslation } from "react-i18next";
 import OtpInput from "react18-input-otp";
 import { useSnackbar } from "notistack";
-import { useUnmountedRef } from "ahooks";
 import ReactGA from "react-ga4";
 
 // project import
@@ -49,7 +48,6 @@ import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
 const AuthRegister = () => {
   const theme = useTheme();
-  const scriptedRef = useUnmountedRef();
   const navigate = useNavigate();
   const { t } = useTranslation("common");
   const { enqueueSnackbar } = useSnackbar();
@@ -60,22 +58,15 @@ const AuthRegister = () => {
 
   const [level, setLevel] = useState<StringColorProps>();
   const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
-  const handleMouseDownPassword = (event: SyntheticEvent) => {
-    event.preventDefault();
-  };
-
-  const handlePasswordChange = (value: string) => {
+  const handlePasswordChange = useCallback((value: string) => {
     const temp = strengthIndicator(value);
     setLevel(strengthColor(temp));
-  };
+  }, []);
 
   useEffect(() => {
     handlePasswordChange("");
-  }, []);
+  }, [handlePasswordChange]);
 
   const validationSchema = useMemo(
     () =>
@@ -105,6 +96,14 @@ const AuthRegister = () => {
     [t, siteConfig?.is_invite_force, siteConfig?.is_email_verify]
   );
 
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <>
       <Formik
@@ -127,55 +126,51 @@ const AuthRegister = () => {
           }
 
           try {
-            await register({
+            const response = await register({
               email: values.email,
               password: values.password,
               invite_code: values.invite_code,
               email_code: siteConfig?.is_email_verify ? values.email_code : ""
-            } as RegisterPayload)
-              .unwrap()
-              .then(
-                () => {
-                  setStatus({ success: true });
-                  enqueueSnackbar(t("notice::register_success"), { variant: "success" });
-                  navigate("/dashboard", { replace: true });
-                  ReactGA.event("register", {
-                    category: "auth",
-                    label: "register",
-                    method: "email",
-                    success: true,
-                    email: values.email,
-                    password_strength: level?.label,
-                    invite_code: values.invite_code
-                  });
-                },
-                (error) => {
-                  setStatus({ success: false });
-                  setErrors(lo.isEmpty(error.errors) ? { submit: error.message } : error.errors);
-                  ReactGA.event("register", {
-                    category: "auth",
-                    label: "register",
-                    method: "email",
-                    success: false,
-                    error: error.message,
-                    email: values.email,
-                    values
-                  });
-                }
-              );
-          } catch (err: any) {
-            console.error(err);
-            if (scriptedRef.current) {
-              setStatus({ success: false });
-              setErrors(lo.isEmpty(err.errors) ? { submit: err.message } : err.errors);
-            }
-          } finally {
+            } as RegisterPayload).unwrap();
+
+            setStatus({ success: true });
+            enqueueSnackbar(t("notice::register_success"), { variant: "success" });
+            navigate("/dashboard", { replace: true });
+
+            ReactGA.event("register", {
+              category: "auth",
+              label: "register",
+              method: "email",
+              success: true,
+              email: values.email,
+              password_strength: level?.label,
+              invite_code: values.invite_code
+            });
+
+          } catch (error) {
+            setStatus({ success: false });
             setSubmitting(false);
+            if (error.errors) {
+              setErrors(error.errors);
+            } else {
+              setErrors({ submit: error.message });
+            }
+
+            ReactGA.event("register", {
+              category: "auth",
+              label: "register",
+              method: "email",
+              success: false,
+              error: error.message,
+              email: values.email,
+              password_strength: level?.label,
+              invite_code: values.invite_code
+            });
           }
         }}
       >
-        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values, setValues }) => (
-          <Box component={"form"} onSubmit={handleSubmit}>
+        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
+          <Box component="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               {/* Email */}
               <Grid item xs={12}>
@@ -216,10 +211,12 @@ const AuthRegister = () => {
                       <OtpInput
                         value={values.email_code}
                         onChange={(otp: string) => {
-                          setValues((prev) => ({
-                            ...prev,
-                            email_code: otp
-                          }));
+                          handleChange({
+                            target: {
+                              name: "email_code",
+                              value: otp
+                            }
+                          });
                         }}
                         numInputs={6}
                         containerStyle={{ justifyContent: "space-between" }}
@@ -230,10 +227,7 @@ const AuthRegister = () => {
                           border: `1px solid ${
                             theme.palette.mode === "dark" ? theme.palette.grey[200] : theme.palette.grey[300]
                           }`,
-                          borderRadius: 4,
-                          ":hover": {
-                            borderColor: theme.palette.primary.main
-                          }
+                          borderRadius: 4
                         }}
                         focusStyle={{
                           outline: "none",
@@ -268,7 +262,7 @@ const AuthRegister = () => {
                       handleChange(e);
                       handlePasswordChange(e.target.value);
                     }}
-                    autoComplete={"new-password"}
+                    autoComplete="new-password"
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
@@ -276,7 +270,6 @@ const AuthRegister = () => {
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
-                          color="secondary"
                         >
                           {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                         </IconButton>
@@ -324,7 +317,7 @@ const AuthRegister = () => {
                       handleChange(e);
                       handlePasswordChange(e.target.value);
                     }}
-                    autoComplete={"new-password"}
+                    autoComplete="new-password"
                     placeholder="******"
                     inputProps={{}}
                   />
@@ -366,26 +359,17 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  value={false}
-                  control={<Checkbox />}
-                  name={"agree"}
-                  id={"agree"}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  aria-required={true}
-                  sx={{
-                    alignItems: "flex-start"
-                  }}
+                  control={<Checkbox name="agree" color="primary" />}
                   label={
-                    <Typography variant={"body2"}>
-                      <Trans i18nKey={"register.license_agree"}>
+                    <Typography variant="body2">
+                      <Trans i18nKey="register.license_agree">
                         <Link
-                          id={"terms-of-service"}
+                          id="terms-of-service"
                           variant="subtitle2"
                           component={RouterLink}
                           to="/terms-of-service"
                         />
-                        <Link id={"privacy-policy"} variant="subtitle2" component={RouterLink} to="/privacy-policy" />
+                        <Link id="privacy-policy" variant="subtitle2" component={RouterLink} to="/privacy-policy" />
                       </Trans>
                     </Typography>
                   }
