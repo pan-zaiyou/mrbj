@@ -94,6 +94,7 @@
   },
   "forgot_password": {
     "title": "忘记密码",
+    "submit": "重置密码",
     "back_to_login": "返回登录",
     "email": "邮箱",
     "email_placeholder": "请输入您的邮箱",
