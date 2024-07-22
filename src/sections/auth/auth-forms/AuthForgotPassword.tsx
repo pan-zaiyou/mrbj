@@ -39,14 +39,15 @@ import ReactGA from "react-ga4";
 const AuthForgotPassword = () => {
   const theme = useTheme();
   const { t } = useTranslation("common");
-  const scriptedRef = useUnmountedRef();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const scriptedRef = useUnmountedRef();
 
   const [resetPassword] = useResetPasswordMutation();
 
   const [level, setLevel] = useState<StringColorProps>();
   const [showPassword, setShowPassword] = useState(false);
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
