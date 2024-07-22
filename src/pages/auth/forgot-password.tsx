@@ -23,12 +23,17 @@ const ForgotPassword: React.FC = () => {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            sx={{ mb: { xs: -0.5, sm: 0.5 } }}
+            sx={{ mb: { xs: 1, sm: 1 } }} // 修复 mb 属性值
           >
             <Typography variant="h3">
               <Trans i18nKey="forgot_password.title">Forgot password</Trans>
             </Typography>
-            <Button component={Link} to="/login" variant="text" sx={{ textDecoration: "none", color: "primary" }}>
+            <Button 
+              component={Link} 
+              to="/login" 
+              variant="text" 
+              sx={{ textDecoration: "none", color: "primary.main" }} // 确保颜色属性值正确
+            >
               <Trans i18nKey="forgot_password.back_to_login">Back to login</Trans>
             </Button>
           </Stack>
