@@ -36,6 +36,8 @@ import { StringColorProps } from "@/types/password";
 import { strengthColor, strengthIndicator } from "@/utils/password-strength";
 import ReactGA from "react-ga4";
 
+// ============================|| FIREBASE - FORGOT PASSWORD ||============================ //
+
 const AuthForgotPassword = () => {
   const theme = useTheme();
   const { t } = useTranslation("common");
@@ -86,10 +88,17 @@ const AuthForgotPassword = () => {
             .oneOf([Yup.ref("password"), null], t("forgot_password.password_confirm_invalid").toString())
             .required(t("forgot_password.password_confirm_required").toString()),
           email_code: Yup.string()
-            .length(6, t("forgot_password.email_code_invalid").toString())
+            .min(6, t("forgot_password.email_code_min", { count: 6 }).toString())
+            .max(6, t("forgot_password.email_code_max", { count: 6 }).toString())
             .required(t("forgot_password.email_code_required").toString())
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+          if (values.email_code.length !== 6) {
+            setStatus({ success: false });
+            setErrors({ email_code: t("forgot_password.email_code_invalid").toString() });
+            return;
+          }
+
           await resetPassword({
             email: values.email,
             password: values.password,
