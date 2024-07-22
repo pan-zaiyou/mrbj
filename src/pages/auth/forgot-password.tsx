@@ -1,12 +1,11 @@
-
 import React from "react";
 import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
 
 // material-ui
-import { Grid, Stack, Typography } from "@mui/material";
+import { Grid, Stack, Typography, Button } from "@mui/material";
 
-// project import
+// project import (示例路径，根据你的项目配置调整)
 import AuthWrapper from "@/sections/auth/AuthWrapper";
 import AuthForgotPassword from "@/sections/auth/auth-forms/AuthForgotPassword";
 import useTitle from "@/hooks/useTitle";
@@ -23,15 +22,15 @@ const ForgotPassword: React.FC = () => {
           <Stack
             direction="row"
             justifyContent="space-between"
-            alignItems="baseline"
+            alignItems="center"
             sx={{ mb: { xs: -0.5, sm: 0.5 } }}
           >
             <Typography variant="h3">
-              <Trans i18nKey={"forgot_password.title"}>Forgot password</Trans>
+              <Trans i18nKey="forgot_password.title">Forgot password</Trans>
             </Typography>
-            <Typography component={Link} to={"/login"} variant="body1" sx={{ textDecoration: "none" }} color="primary">
-              <Trans i18nKey={"forgot_password.back_to_login"}>Back to login</Trans>
-            </Typography>
+            <Button component={Link} to="/login" variant="text" sx={{ textDecoration: "none", color: "primary" }}>
+              <Trans i18nKey="forgot_password.back_to_login">Back to login</Trans>
+            </Button>
           </Stack>
         </Grid>
         <Grid item xs={12}>
