@@ -99,11 +99,14 @@ const AuthForgotPassword = () => {
         }
 
         try {
-          await resetPassword({
+          console.log("Sending reset password request:", values); // Debug log
+          const response = await resetPassword({
             email: values.email,
             password: values.password,
             email_code: values.email_code
           }).unwrap();
+
+          console.log("Reset password response:", response); // Debug log
 
           if (scriptedRef.current) {
             setStatus({ success: true });
@@ -123,7 +126,7 @@ const AuthForgotPassword = () => {
           console.error("Error in reset password", err);
           if (scriptedRef.current) {
             setStatus({ success: false });
-            setErrors(err.errors || { submit: err.message });
+            setErrors({ submit: err.message || t("forgot_password.error_generic") });
             setSubmitting(false);
             ReactGA.event("reset_password", {
               category: "auth",
