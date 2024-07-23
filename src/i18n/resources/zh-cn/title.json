@@ -1,11 +1,11 @@
 {
   "app": "应用",
-  "dashboard": "仪表盘",
+  "dashboard": "首页",
   "login": "登录",
   "register": "注册",
   "forgot-password": "忘记密码",
   "knowledge": "使用文档",
-  "subscription": "订阅",
+  "subscription": "套餐",
   "buy-plan": "购买套餐",
   "not_found": "404 页面未找到",
   "server_error": "服务器错误",
