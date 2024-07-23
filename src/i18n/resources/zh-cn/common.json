@@ -26,7 +26,6 @@
       "dark-mode-switch": {
         "title": "切换色彩模式",
         "follow-system": "跟随系统",
-        "follow-times": "跟随时间",
         "always-light": "始终亮色",
         "always-dark": "始终暗色"
       },
@@ -162,14 +161,14 @@
       "description": "您的常用操作",
       "tutorial": {
         "primary": "使用教程",
-        "secondary": "不会用？那还赶快查看使用教程"
+        "secondary": "软件下载？不会用？那还赶快查看使用教程"
       },
       "subscribe": {
         "primary": "一键导入",
         "secondary": "快速将配置导入到软件进行使用",
         "copy": "复制配置链接",
         "scan": "扫描二维码",
-        "scan_tips": "使用支持扫码的客户端扫码导入配置",
+        "scan_tips": "使用支持扫码的软件扫码导入配置",
         "clash": "导入至 Clash",
         "clashx": "导入至 ClashX",
         "surfboard": "导入至 Surfboard",
