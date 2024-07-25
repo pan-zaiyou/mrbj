@@ -36,7 +36,9 @@
     },
     "footer": {
       "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有",
-      "contact-us": "联系我们"
+      "contact-us": "联系我们",
+      "privacy-policy": "隐私政策",
+      "terms-of-service": "服务条款"
       }
   },
   "login": {
@@ -135,8 +137,8 @@
     "footer": {
       "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有",
       "links": {
-        "terms": "",
-        "privacy": ""
+        "terms": "服务协议",
+        "privacy": "隐私政策"
       }
     }
   },
