@@ -54,7 +54,7 @@ function ComingSoon() {
       >
         <Grid item xs={12}>
           <Box sx={{ height: { xs: 310, sm: 420 }, width: { xs: 360, sm: "auto" } }}>
-            <img src={coming} alt="mantis" style={{ height: "100%", width: "100%" }} />
+            <img src={coming} alt="HEYCLOUD" style={{ height: "100%", width: "100%" }} />
           </Box>
         </Grid>
         <Grid item xs={12}>
