@@ -120,7 +120,7 @@ const Header = ({ handleDrawerOpen, layout = "landing", ...others }: Props) => {
               <Link
                 className="header-link"
                 color="white"
-                href="https://codedthemes.gitbook.io/mantis/"
+                href="https://codedthemes.gitbook.io/HEYCLOUD/"
                 target="_blank"
                 underline="none"
               >
@@ -130,7 +130,7 @@ const Header = ({ handleDrawerOpen, layout = "landing", ...others }: Props) => {
                 <AnimateButton>
                   <Button
                     component={Link}
-                    href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
+                    href="https://mui.com/store/items/HEYCLOUD-react-admin-dashboard-template/"
                     disableElevation
                     color="primary"
                     variant="contained"
