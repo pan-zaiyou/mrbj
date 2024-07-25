@@ -36,9 +36,7 @@
     },
     "footer": {
       "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有",
-      "contact-us": "联系我们",
-      "privacy-policy": "隐私政策",
-      "terms-of-service": "服务条款"
+      "contact-us": "联系我们"
     }
   },
   "login": {
@@ -84,7 +82,7 @@
     "password_confirm_invalid": "您两次输入的密码不一致",
     "password_confirm_required": "您必须再次输入密码",
     "go-login": "已有账户？登录",
-    "license_agree": "您确保已经完整阅读并同意我们的 <0>服务协议</0> 和 <1>隐私政策</1>",
+    "license_agree": "您确保已经完整阅读并同意我们的服务协议和隐私政策",
     "agree_required": "您必须同意服务协议和隐私政策",
     "invite_code": "邀请码",
     "invite_code_max": "邀请码长度不能超过 {{count}} 个字符",
@@ -135,10 +133,7 @@
       "error_null_token": "出现错误，Token 为空，请重试"
     },
     "footer": {
-      "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有",
-      "links": {
-        "terms": "服务协议",
-        "privacy": "隐私政策"
+      "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有"
       }
     }
   },
