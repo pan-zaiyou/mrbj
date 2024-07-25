@@ -47,7 +47,7 @@ const Footer = () => {
           <Link href="https://github.com/star-horizon" target="_blank" color="textPrimary" underline="hover" />
         </AppTrans>
       </Typography>
-      <Stack spacing={1.5} direction="row" className={classes.right}>
+      <Stack spacing={2.10} direction="row" className={classes.right}>
         {data?.telegram_discuss_link && (
           <Link href={data?.telegram_discuss_link} target="_blank" variant="caption" color="textPrimary">
             {t("layout.footer.contact-us")}
