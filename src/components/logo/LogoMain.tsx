@@ -7,10 +7,6 @@ import { useTheme } from '@mui/material/styles';
  
 // ==============================|| LOGO SVG ||============================== //
 
-const LogoMain = ({ reverse, ...others }: { reverse?: boolean }) => {
-  const theme = useTheme();
-  return (
-    /**
+
      * if you want to use image instead of svg uncomment following, and comment out <svg> element.
-     
-export default LogoMain;
+    
