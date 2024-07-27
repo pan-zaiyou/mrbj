@@ -106,8 +106,8 @@ const AuthForgotPassword = () => {
             email_code: values.email_code
           })
             .unwrap()
-            .then((response) => {
-              if (scriptedRef.current) {
+            .then(() => {
+              if (!scriptedRef.current) {
                 setStatus({ success: true });
                 setSubmitting(false);
                 enqueueSnackbar(t("notice::forgot_password.reset_success"), {
