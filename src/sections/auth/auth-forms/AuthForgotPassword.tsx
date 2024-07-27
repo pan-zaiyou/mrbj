@@ -106,7 +106,7 @@ const AuthForgotPassword = () => {
             email_code: values.email_code
           })
             .unwrap()
-            .then((result) => {
+            .then((No) => {
               if (scriptedRef.current) {
                 setStatus({ success: true });
                 setSubmitting(false);
