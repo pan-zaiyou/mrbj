@@ -30,7 +30,7 @@ const config: DefaultConfigProps = {
   title_split: " - ",
   background_url: "https://unsplash.com/random",
   description: "天下武功 唯快不破",
-  logo: "",
+  logo: "https://i.loli.wiki/public/240728/ansible-svgrepo-com.png",
   api: "https://www.011409.xyz",
   languages: ["zh-CN", "en-US"],
   googleAnalytics: {
