@@ -1,4 +1,3 @@
-
 import React, { SyntheticEvent, useEffect, useMemo, useState } from "react";
 import lo from "lodash-es";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
@@ -105,7 +104,6 @@ const AuthRegister = () => {
     }),
   [t, siteConfig?.is_invite_force, siteConfig?.is_email_verify]
 );
-
   return (
     <>
       <Formik
@@ -152,7 +150,9 @@ const AuthRegister = () => {
                 },
                 (error) => {
                   setStatus({ success: false });
+                  // Ensure errors are properly set for fields as well as the global error
                   setErrors(lo.isEmpty(error.errors) ? { submit: error.message } : error.errors);
+                  enqueueSnackbar(error.message, { variant: "error" }); // Show API error message at the top
                   ReactGA.event("register", {
                     category: "auth",
                     label: "register",
@@ -169,6 +169,7 @@ const AuthRegister = () => {
             if (scriptedRef.current) {
               setStatus({ success: false });
               setErrors(lo.isEmpty(err.errors) ? { submit: err.message } : err.errors);
+              enqueueSnackbar(t("notice::register_failed"), { variant: "error" }); // Show a general error message at the top
             }
           } finally {
             setSubmitting(false);
@@ -378,7 +379,9 @@ const AuthRegister = () => {
                     alignItems: "flex-start"
                   }}
                   label={
-                    <Typography variant={"body2"}>
+                    <Typography variant={"body2"} sx={{
+                      lineHeight: 2.9,
+                    }}>
                       <Trans i18nKey={"register.license_agree"}>
                         <Link
                           id={"terms-of-service"}
@@ -392,11 +395,11 @@ const AuthRegister = () => {
                   }
                 />
               </Grid>
-              {errors.submit && (
+              {/* {errors.submit && (
                 <Grid item xs={12}>
                   <FormHelperText error>{errors.submit}</FormHelperText>
                 </Grid>
-              )}
+              )} */}
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button
