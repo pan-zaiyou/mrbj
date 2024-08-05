@@ -12,16 +12,16 @@ const LogoMain = ({ reverse, ...others }: { reverse?: boolean }) => {
     <div
       style={{
         position: 'absolute',
-        top: '10px',  // 根据需要调整距离上边的距离
-        left: '10px', // 根据需要调整距离左边的距离
+        top: '0px',  // 进一步向上移动
+        left: '0px', // 进一步向左移动
         zIndex: 10,
       }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="120"  // 调整宽度
-        height="120" // 调整高度
+        width="120"  // 图标的宽度
+        height="120" // 图标的高度
         viewBox="0 0 375 375"  // 适应新的 viewBox
         preserveAspectRatio="xMidYMid meet"
         version="1.0"
