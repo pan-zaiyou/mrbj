@@ -20,7 +20,7 @@ const LogoMain = ({ reverse, ...others }: { reverse?: boolean }) => {
      *
      */
     <>
-      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="500" zoomAndPan="magnify" viewBox="0 0 375 374.999991" height="500" preserveAspectRatio="xMidYMid meet" version="1.0">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="130" height="130" viewBox="0 0 375 375">
         <defs><g/></defs>
         <path fill="#000000" d="M 88.84375 12.222656 L 129.585938 52.964844 L 115.71875 66.855469 L 88.84375 39.976562 L 79.398438 49.464844 L 65.488281 35.574219 Z M 61.207031 39.878906 L 75.070312 53.785156 L 88.121094 66.792969 L 74.210938 80.660156 L 47.378906 53.824219 L 25.984375 75.21875 L 20.5 80.664062 L 6.632812 66.796875 L 47.378906 26.054688 Z M 61.207031 39.878906 " fillOpacity="1" fillRule="nonzero"/>
         <g fill="#000000" fillOpacity="1">
