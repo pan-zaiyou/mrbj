@@ -23,6 +23,9 @@ import "@/analytics";
 import "@fontsource/roboto";
 import "simplebar-react/dist/simplebar.min.css";
 
+// 导入自定义函数
+import { handleMobileClick } from "@/custom"; // 确保路径正确
+
 // hash router change to browser router
 if (window.location.hash) {
   window.location.href = window.location.hash;
@@ -66,6 +69,10 @@ root.render(
   </ReduxProvider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// 运行自定义代码
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.treeview-menu li a');
+  links.forEach(link => {
+    link.addEventListener('click', handleMobileClick);
+  });
+});
