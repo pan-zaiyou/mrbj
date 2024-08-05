@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // third-party
 import { I18nextProvider } from "react-i18next";
@@ -20,7 +20,6 @@ import usePageAnalyticsEffect from "@/hooks/usePageAnalyticsEffect";
 import useAuthStateDetector from "@/hooks/useAuthStateDetector";
 import useHtmlLangSelector from "@/hooks/useHtmlLangSelector";
 import useTitle from "@/hooks/useTitle";
-import { handleMobileClick } from "@/custom"; // 导入自定义函数
 
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
@@ -31,21 +30,6 @@ const App = () => {
   useAuthStateDetector();
   useHtmlLangSelector();
   useTitle(null);
-
-  useEffect(() => {
-    // 绑定点击事件
-    const links = document.querySelectorAll('.treeview-menu li a');
-    links.forEach(link => {
-      link.addEventListener('click', handleMobileClick);
-    });
-
-    // 清理事件监听器
-    return () => {
-      links.forEach(link => {
-        link.removeEventListener('click', handleMobileClick);
-      });
-    };
-  }, []); // 空依赖数组确保只在组件挂载和卸载时执行
 
   return (
     <CacheProvider value={cache}>
