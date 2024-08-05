@@ -12,7 +12,6 @@ import { useTheme } from "@mui/material/styles";
 // project import
 import Routes from "@/routes";
 import ThemeCustomization from "@/themes";
-// import RTLLayout from '@/components/RTLLayout';
 import ScrollTop from "@/components/ScrollTop";
 import cache from "@/themes/cache";
 import i18n from "@/i18n";
@@ -20,6 +19,7 @@ import usePageAnalyticsEffect from "@/hooks/usePageAnalyticsEffect";
 import useAuthStateDetector from "@/hooks/useAuthStateDetector";
 import useHtmlLangSelector from "@/hooks/useHtmlLangSelector";
 import useTitle from "@/hooks/useTitle";
+import Sidebar from './Sidebar';  // Import the Sidebar component
 
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
@@ -46,7 +46,12 @@ const App = () => {
               autoHideDuration={4000}
               dense
             >
-              <Routes />
+              <div style={{ display: 'flex' }}>
+                <Sidebar />  {/* Add Sidebar here */}
+                <div style={{ flexGrow: 1 }}>
+                  <Routes />
+                </div>
+              </div>
               <GlobalStyles
                 styles={{
                   body: {
