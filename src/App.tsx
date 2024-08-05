@@ -19,7 +19,7 @@ import usePageAnalyticsEffect from "@/hooks/usePageAnalyticsEffect";
 import useAuthStateDetector from "@/hooks/useAuthStateDetector";
 import useHtmlLangSelector from "@/hooks/useHtmlLangSelector";
 import useTitle from "@/hooks/useTitle";
-import Sidebar from './Sidebar';  // Import the Sidebar component
+import Sidebar from './Sidebar';  // Ensure this path is correct
 
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
