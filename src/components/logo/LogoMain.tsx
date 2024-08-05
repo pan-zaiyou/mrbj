@@ -15,15 +15,13 @@ const LogoMain = ({ reverse, ...others }: { reverse?: boolean }) => {
         top: '10px',  // 根据需要调整距离上边的距离
         left: '10px', // 根据需要调整距离左边的距离
         zIndex: 10,
-        width: 'auto',
-        height: 'auto',
       }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="80"  // 根据需要调整宽度
-        height="80" // 根据需要调整高度
+        width="120"  // 调整宽度
+        height="120" // 调整高度
         viewBox="0 0 375 375"  // 适应新的 viewBox
         preserveAspectRatio="xMidYMid meet"
         version="1.0"
