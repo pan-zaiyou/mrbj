@@ -26,7 +26,6 @@
       "dark-mode-switch": {
         "title": "切换色彩模式",
         "follow-system": "跟随系统",
-        "follow-times": "跟随时间",
         "always-light": "始终亮色",
         "always-dark": "始终暗色"
       },
@@ -35,9 +34,8 @@
       }
     },
     "footer": {
-      "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有",
+      "copyright": "© {{date}}  <0>跨越长城</0>  版权所有",
       "contact-us": "联系我们",
-      "privacy-policy": "隐私政策",
       "terms-of-service": "服务条款"
       }
   },
@@ -84,7 +82,7 @@
     "password_confirm_invalid": "您两次输入的密码不一致",
     "password_confirm_required": "您必须再次输入密码",
     "go-login": "已有账户？登录",
-    "license_agree": "您确保已经完全阅读并同意我们的 <0>服务协议</0> 和 <1>隐私政策</1>",
+    "license_agree": "您确保已经阅读并同意我们的 <0>服务协议</0> 和 <1>隐私政策</1>",
     "agree_required": "您必须同意服务协议和隐私政策",
     "invite_code": "邀请码",
     "invite_code_max": "邀请码长度不能超过 {{count}} 个字符",
@@ -135,7 +133,7 @@
       "error_null_token": "出现错误，Token 为空，请重试"
     },
     "footer": {
-      "copyright": "© {{date}} <0>CROSSWALL NETWORK</0> 版权所有",
+      "copyright": "© {{date}} <0>跨越长城</0> 版权所有",
       "links": {
         "terms": "服务协议",
         "privacy": "隐私政策"
@@ -155,7 +153,7 @@
       "expire_limited_zero": "此套餐已到期，请及时续费",
       "expire_limited_other": "于 {{date}} 到期，距离到期还有 {{count}} 天，将于 {{reset_date}} 天后重置流量",
       "traffic": "已用流量 {{used}} GB / 总计流量 {{total}} GB",
-      "no-subscription": "嘿，您还没有激活超能力呢！先买个套餐，马上开启无敌模式!"
+      "no-subscription": "嘿，您还没有激活超能力呢！先买个套餐，马上开启无敌模式🚀🚀🚀"
     },
     "shortcut": {
       "title": "捷径",
@@ -197,8 +195,10 @@
   },
   "maintenance": {
     "404": {
-      "title": "页面未找到",
-      "description": "您访问的页面不存在或已被删除",
+      "title": "哎呀！页面丢失了",
+      "description": "侦探猫咪已经出动，正在寻找你要的页面...",
+      "description": "但在此之前，或许你可以先喝杯茶，放松一下。",
+      "description": "如果你觉得无聊，可以找客服聊聊天🤣",
       "button": "返回首页"
     }
   },
@@ -395,7 +395,7 @@
         "title": "我的邀请",
         "currency": "CNY",
         "description": "当前剩余佣金",
-        "helperText": "邀请好友注册，您将获得邀请奖励，好友也将获得注册奖励。",
+        "helperText": "邀请好友注册，您将获得邀请奖励。",
         "transfer-button": "划转",
         "transfer-dialog": {
           "title": "推广佣金划转至余额",
